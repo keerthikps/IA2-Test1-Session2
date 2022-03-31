@@ -1,0 +1,99 @@
+gcc -g p2final.c
+gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) br main
+Breakpoint 1 at 0x843: file p2final.c, line 33.
+(gdb) r
+Starting program: /home/runner/IA2-Test1-Session2-3/a.out 
+warning: Error disabling address space randomization: Operation not permitted
+
+Breakpoint 1, main () at p2final.c:33
+33    a=input_side();
+(gdb) s
+input_side () at p2final.c:3
+3   {
+(gdb) n
+5     printf("enter a side length: \n");
+(gdb) n
+enter a side length: 
+6     scanf("%d",&a);
+(gdb) n
+8
+7     return a;
+(gdb) n
+8   }
+(gdb) n
+main () at p2final.c:34
+34    b=input_side();
+(gdb) s
+input_side () at p2final.c:3
+3   {
+(gdb) n
+5     printf("enter a side length: \n");
+(gdb) n
+enter a side length: 
+6     scanf("%d",&a);
+(gdb) n
+6
+7     return a;
+(gdb) n
+8   }
+(gdb) n
+main () at p2final.c:35
+35    c=input_side();
+(gdb) s
+input_side () at p2final.c:3
+3   {
+(gdb) n
+5     printf("enter a side length: \n");
+(gdb) n
+enter a side length: 
+6     scanf("%d",&a);
+(gdb) n
+3
+7     return a;
+(gdb) n
+8   }
+(gdb) n
+main () at p2final.c:36
+36    isscalene=check_scalene(a,b,c);
+(gdb) s
+check_scalene (a=8, b=6, c=3) at p2final.c:12
+12    if (a!=b && a!=c && b!=c)
+(gdb) n
+14      isscalene=0;
+(gdb) n
+16    return isscalene;
+(gdb) n
+17  }
+(gdb) n
+main () at p2final.c:37
+37    output(a,b,c,isscalene);
+(gdb) s
+output (a=8, b=6, c=3, isscalene=0) at p2final.c:20
+20    if(isscalene==0)
+(gdb) n
+22      printf("The triange is scalene for lengths %d,%d and %d",a,b,c);
+(gdb) n
+28  }
+(gdb) n
+main () at p2final.c:38
+38    return 0;
+(gdb) c
+Continuing.
+The triange is scalene for lengths 8,6 and 3[Inferior 1 (process 620) exited normally]
+(gdb) q

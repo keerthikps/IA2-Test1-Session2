@@ -1,59 +1,35 @@
-/* What is a string?
-   Array of characters terminated by '\0'.
-
-   char a[100]='Sanvi";
-   a[0] - 'S'
-   a[1]- 'a'
-   a[2] - 'n'
-   a[3] - 'v'
-   a[4] - 'i'
-   a[5] - '\0'
-*/
-
-void get_string(char *s)
+#include <stdio.h>
+void input_string(char *a)
 {
-  printf("Enter a string\n");
-  scanf("%s",s);
+  printf("Enter the string:\n");
+  scanf("%s", a);
 }
 
-int string_length(char *s)
+void str_reverse(char *str, char *rev_str)
 {
-  for(int i=0;s[i]!= '\0';i++);
-  return i;
-}
-
-char *string_copy(char *d, char *s)
-{
-  for(int i=0;s[i]!= '\0';i++);
-    d[i]=s[i];
-  return d;
-}
-char *string_rev(char *s)
-{
-  int length = string_lenght(s);
-  length -= 1;
-  char t;
-  for(int i=0; i < lenght/2; i++)
+  int n;
+  for (n = 0; str[n]; n++);
+  n--;
+  int i;
+  for (i = 0; str[i]; i++)
   {
-    t = s[i];
-    s[i] = s[length - i]
-    s[length - 1] = t;
+    rev_str[i] = str[n];
+    n--;
   }
-  return s;
+  rev_str[i] = '\0';
 }
 
-void output(char *s, char *r)
+void output(char *a, char *reverse_a)
 {
-  printf("The reverse of %s is %s\n",s,r);
+  printf("The reverse of %s is %s\n", a, reverse_a);
 }
 
 int main()
 {
-  char s[100];
-  get_string(s);
-  char original[100];
-  string_copy(original, s);
-  string_rev(s);
-  ouput(original,s);
+  char str[10];
+  input_string(str);
+  char rev_str[10];
+  str_reverse(str, rev_str);
+  output(str, rev_str);
   return 0;
 }
